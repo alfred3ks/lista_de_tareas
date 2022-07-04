@@ -1,0 +1,24 @@
+Para los iconos voy a usar fontawesome:
+https://fontawesome.com/v5/docs/web/use-with/react
+
+Seguimos las instrucciones y instalamos los paquetes dentro del proyecto:
+
+npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+
+Ahora ya podemos importar los iconos en el componente que necesitemos, en el caso del Header.js
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+Lo vemos tambien como hacerlo en la documentacion ver el enlace de arriba.
+
+Una nota general, para con vscode ver las lineas de comentarios en color lo he modificado en:
+
+configuracion/Fuente/Font Weight
+Editamos el .setting.json
+
+"editor.tokenColorCustomizations": {
+    "comments": "#FF0"
+}
