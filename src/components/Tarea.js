@@ -1,16 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faSquare, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const Tarea = ({ tarea }) => {
+
+const Tarea = ({ tarea, toggleCompletada }) => {
+
+  // Estado para editar la tarea:
+  const [editandoTarea, cambiarEditandoTarea] = useState(false);
+
+  // Estado para editar el input:
+  const [nuevaTarea, cambiarNuevaTarea] = useState(tarea.texto);
+
+  // Le agregamos al formulario este evento de enviar:onSubmit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    cambiarEditandoTarea(false);
+  }
+
+
+
   return (
     <li className='list-tasks__task'>
-      <FontAwesomeIcon icon={faCheckSquare} className='list-tasks__icon list-tasks__icon-check' />
+      <FontAwesomeIcon icon={tarea.completada ? faCheckSquare : faSquare}
+        className='list-tasks__icon list-tasks__icon-check'
+        onClick={() => { toggleCompletada(tarea.id) }}
+      />
+
       <div className='list-tasks__text'>
-        {tarea.texto}
+        {editandoTarea ?
+          <form action="" className='form-edit-task' onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className='form-edit-task__input'
+              value={nuevaTarea}
+              onChange={(e) => {
+                cambiarNuevaTarea(e.target.value);
+              }}
+
+            />
+            <button className='form-edit-task__btn' type='submit'>Actualizar</button>
+
+          </form>
+          :
+          tarea.texto
+        }
       </div>
+
       <div className='list-tasks__container-buttons'>
-        <FontAwesomeIcon icon={faEdit} className='list-tasks__icon list-tasks__icon-action' />
+        <FontAwesomeIcon
+          icon={faEdit}
+          className='list-tasks__icon list-tasks__icon-action'
+          onClick={() => { cambiarEditandoTarea(!editandoTarea) }}
+        />
         <FontAwesomeIcon icon={faTimes} className='list-tasks__icon list-tasks__icon-action' />
       </div>
     </li>
