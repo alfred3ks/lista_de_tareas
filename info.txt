@@ -22,3 +22,9 @@ Editamos el .setting.json
 "editor.tokenColorCustomizations": {
     "comments": "#FF0"
 }
+
+Creacion del formulario: FormularioTareas.js:
+En el tema de la creacion del formulario, para hacer los id he utilizado un paquete de node llamado uuid:
+
+npm install uuid
+
