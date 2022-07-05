@@ -2,7 +2,7 @@
 import React from 'react';
 import Tarea from './Tarea';
 
-const ListaTareas = ({ tareas, cambiarTareas }) => {
+const ListaTareas = ({ tareas, cambiarTareas, mostrarCompletadas }) => {
 
   // Creamos la funcion para editar el input de la tarea, el checkbox:
   const toggleCompletada = (id) => {
@@ -52,13 +52,27 @@ const ListaTareas = ({ tareas, cambiarTareas }) => {
         tareas.length > 0
           ?
           tareas.map((tarea) => {
-            return <Tarea
-              key={tarea.id}
-              tarea={tarea}
-              toggleCompletada={toggleCompletada}
-              editarTarea={editarTarea}
-              borrarTarea={borrarTarea}
-            />
+
+            if (mostrarCompletadas) {
+              return <Tarea
+                key={tarea.id}
+                tarea={tarea}
+                toggleCompletada={toggleCompletada}
+                editarTarea={editarTarea}
+                borrarTarea={borrarTarea}
+              />
+              // Si la tarea no esta completada, la devolvemos:
+            } else if (!tarea.completada) {
+              return <Tarea
+                key={tarea.id}
+                tarea={tarea}
+                toggleCompletada={toggleCompletada}
+                editarTarea={editarTarea}
+                borrarTarea={borrarTarea}
+              />
+            }
+            // Si la tarea esta ya completada, no la devolvemos:
+            return;
           })
           :
           <div className='list-tasks__msj'>~ No hay tareas agregadas ~</div>
