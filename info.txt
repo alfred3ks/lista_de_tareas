@@ -32,3 +32,9 @@ Shortcode:
 irm -> importamos react.
 sfc -> Creamos un componente.
 
+LocalStorage, guardar los valores.
+
+- importamos useEffect en App.js
+
+
+

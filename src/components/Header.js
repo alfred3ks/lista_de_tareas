@@ -32,7 +32,7 @@ const Header = ({ mostrarCompletadas, cambiarMostrarCompletadas }) => {
                             toggleCompletadas();
                         }}
                     >
-                        Completadas
+                        Mostrar Completadas
                         <FontAwesomeIcon
                             icon={faEye}
                             className='header__icon-button' />

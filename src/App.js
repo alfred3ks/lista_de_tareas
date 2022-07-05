@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import FormularioTareas from './components/FormularioTareas';
 import ListaTareas from './components/ListaTareas';
@@ -6,12 +6,38 @@ import './App.css';
 
 const App = () => {
 
-  // Creamos un estado inicial que tendra nuestras tareas: Un Arrays vacio:
-  const [tareas, cambiarTareas] = useState([]);
+  // Funcion para localStorage: Obtenemos las tareas guardadas de localStorage
+  const tareasGuardadas =
+    localStorage.getItem('tareas')
+      ?
+      JSON.parse(localStorage.getItem('tareas'))
+      :
+      [];
 
-  // console.log(tareas);
+  // Creamos un estado inicial que tendra nuestras tareas:
+  const [tareas, cambiarTareas] = useState(tareasGuardadas);
 
-  const [mostrarCompletadas, cambiarMostrarCompletadas] = useState(false);
+  // Guardando el estado dentro de localStorage
+  useEffect(() => {
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+  }, [tareas]);
+
+  // Accedemos a localStorage y comprobamos si mostrarCompletadas es null:
+  let configMostrarCompletadas = '';
+  if (localStorage.getItem('mostrarCompletadas') === null) {
+    configMostrarCompletadas = true;
+  } else {
+    configMostrarCompletadas =
+      localStorage.getItem('mostrarCompletadas') === 'true';
+  }
+
+  // El estado de mostrarCompletadas
+  const [mostrarCompletadas, cambiarMostrarCompletadas] = useState(configMostrarCompletadas);
+
+  // Implemetamos localStorage
+  useEffect(() => {
+    localStorage.setItem('mostrarCompletadas', mostrarCompletadas.toString());
+  }, [mostrarCompletadas]);
 
   return (
     <div className='contenedor'>
