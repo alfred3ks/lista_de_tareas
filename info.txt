@@ -28,3 +28,7 @@ En el tema de la creacion del formulario, para hacer los id he utilizado un paqu
 
 npm install uuid
 
+Shortcode:
+irm -> importamos react.
+sfc -> Creamos un componente.
+

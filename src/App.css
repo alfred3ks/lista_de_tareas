@@ -87,3 +87,60 @@
   font-size: 22px;
   color: var(--verde);
 }
+
+/* * --- --- ---  LISTA TAREAS --- --- --- */
+.list-tasks {
+  list-style: none;
+  height: 100%;
+  overflow: auto;
+}
+
+.list-tasks__task {
+  height: 60px;
+  padding: 0 20px;
+  align-items: center;
+  color: #4b4b4b;
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+
+.list-tasks__text {
+  text-align: left;
+  width: 100%;
+}
+
+.list-tasks__task:hover .list-tasks__icon-action {
+  opacity: 0.5;
+}
+
+.list-tasks__task:nth-child(even) {
+  background: #f3f3f3;
+}
+
+.list-tasks__container-buttons {
+  display: flex;
+}
+
+.list-tasks__icon {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.list-tasks__icon-check {
+  margin-right: 20px;
+  font-size: 26px;
+}
+
+.list-tasks__icon-action {
+  margin-left: 20px;
+  opacity: 0;
+  transition: 0.3s ease all;
+}
+
+.list-tasks__msj {
+  text-align: center;
+  color: #b8b8b8;
+  font-size: 20px;
+  padding: 40px 20px;
+}
