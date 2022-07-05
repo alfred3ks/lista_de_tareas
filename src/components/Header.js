@@ -6,11 +6,11 @@ const Header = () => {
     return (
         <header className='header'>
             <h1 className='header__title'>Lista de tareas</h1>
-            <button className='neader__button'>
+            <button className='header__button'>
                 No mostrar completadas
                 <FontAwesomeIcon
-                icon={faEyeSlash}
-                className='header__icon-button'/>
+                    icon={faEyeSlash}
+                    className='header__icon-button' />
             </button>
         </header>
     );

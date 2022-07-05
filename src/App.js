@@ -7,14 +7,9 @@ import './App.css';
 const App = () => {
 
   // Creamos un estado inicial que tendra nuestras tareas: Un Arrays vacio:
-  const [tareas, cambiarTareas] = useState([
+  const [tareas, cambiarTareas] = useState([]);
 
-    { id: 1, texto: 'Lavar la ropa', completada: false },
-    { id: 2, texto: 'Grabar', completada: true },
-
-  ]);
-
-  console.log(tareas);
+  // console.log(tareas);
 
   return (
     <div className='contenedor'>
